@@ -2,6 +2,7 @@ package com.spring.springV2cleanStructure.controller;
 
 import com.spring.springV2cleanStructure.model.dto.EmployeeReqDTO;
 import com.spring.springV2cleanStructure.model.dto.EmployeeRespDTO;
+import com.spring.springV2cleanStructure.model.dto.UpdateEmployeeReqDTO;
 import com.spring.springV2cleanStructure.service.EmployeeService;
 import com.spring.springV2cleanStructure.utilities.EmployeeUtility;
 import com.spring.springV2cleanStructure.utilities.PasswordGenerator;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/employees")
 @RequiredArgsConstructor
-public class EmployeeControllerUtility {
+public class EmployeeController {
     //    we have more one way to use Dependency Injection, by use @Autowirde and that the easy way,
     //    or we can use @REquiredArgsConstructor in the top of class, and put (final) when call classes, and this is more clean than @Annotation.
 //    @Autowirde
@@ -48,5 +49,10 @@ public class EmployeeControllerUtility {
     @GetMapping("/get-employee-details/{id}")
     public String getEmployeeDetails(@PathVariable("id") Long id){
         return this.employeeUtility.getEmployeeDetails(id);
+    }
+
+    @PostMapping("/update-employee")
+    public EmployeeRespDTO update(@RequestBody UpdateEmployeeReqDTO req){
+        return this.employeeService.update(req);
     }
 }

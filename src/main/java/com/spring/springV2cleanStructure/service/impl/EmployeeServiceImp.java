@@ -2,6 +2,7 @@ package com.spring.springV2cleanStructure.service.impl;
 
 import com.spring.springV2cleanStructure.model.dto.EmployeeReqDTO;
 import com.spring.springV2cleanStructure.model.dto.EmployeeRespDTO;
+import com.spring.springV2cleanStructure.model.dto.UpdateEmployeeReqDTO;
 import com.spring.springV2cleanStructure.model.entity.Employee;
 import com.spring.springV2cleanStructure.model.mapper.EmployeeMapperUsingMapSrtuct;
 import com.spring.springV2cleanStructure.repository.EmployeeRepo;
@@ -39,4 +40,12 @@ public class EmployeeServiceImp implements EmployeeService {
             return " the user not found";
         }
     }
+
+    @Override
+    public EmployeeRespDTO update(UpdateEmployeeReqDTO req) {
+        Employee entity = this.employeeMapper.toEntity(req);
+        Employee savedEntity = this.employeeRepo.save(entity); // in spring when we want to update, we will use (save) becuse spring will know the spicifc user by the id, and save method use for both save & update operation.
+        return this.employeeMapper.toRespDTO(savedEntity);
+    }
+
 }
