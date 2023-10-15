@@ -9,6 +9,8 @@ import com.spring.springV2cleanStructure.utilities.PasswordGenerator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.parser.Parser;
+
 @RestController
 @RequestMapping("/employees")
 @RequiredArgsConstructor
@@ -54,5 +56,9 @@ public class EmployeeController {
     @PostMapping("/update-employee")
     public EmployeeRespDTO update(@RequestBody UpdateEmployeeReqDTO req){
         return this.employeeService.update(req);
+    }
+    @PostMapping("/delete-employee")
+    public String deleteEmployee(@RequestHeader Long id){
+        return this.employeeService.delete(id);
     }
 }

@@ -8,9 +8,7 @@ import com.spring.springV2cleanStructure.model.mapper.EmployeeMapperUsingMapSrtu
 import com.spring.springV2cleanStructure.repository.EmployeeRepo;
 import com.spring.springV2cleanStructure.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Optional;
 
@@ -46,6 +44,18 @@ public class EmployeeServiceImp implements EmployeeService {
         Employee entity = this.employeeMapper.toEntity(req);
         Employee savedEntity = this.employeeRepo.save(entity); // in spring when we want to update, we will use (save) becuse spring will know the spicifc user by the id, and save method use for both save & update operation.
         return this.employeeMapper.toRespDTO(savedEntity);
+    }
+
+    @Override
+    public String delete(Long id) {
+        Optional<Employee> byId = this.employeeRepo.findById(id);
+        if (byId.isPresent()) {
+            this.employeeRepo.deleteById(id);
+            return "the employee : "+byId.get().getFullName()+" was successfully deleted ..";
+        }else {
+
+            return "the user not found";
+        }
     }
 
 }
