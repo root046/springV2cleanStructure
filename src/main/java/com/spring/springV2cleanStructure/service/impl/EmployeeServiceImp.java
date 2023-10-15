@@ -53,7 +53,6 @@ public class EmployeeServiceImp implements EmployeeService {
             this.employeeRepo.deleteById(id);
             return "the employee : "+byId.get().getFullName()+" was successfully deleted ..";
         }else {
-
             return "the user not found";
         }
     }

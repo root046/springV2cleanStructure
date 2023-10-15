@@ -12,5 +12,5 @@ public interface EmployeeService {
      EmployeeRespDTO save(EmployeeReqDTO req);
      String getEmployeeDetailsAsStr(Long id);
      EmployeeRespDTO update(UpdateEmployeeReqDTO req);
-     String  delete(Long id);
+     String delete(Long id);
 }
