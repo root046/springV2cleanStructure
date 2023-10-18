@@ -1,18 +1,18 @@
 package com.spring.springV2cleanStructure.controller;
 
-import com.spring.springV2cleanStructure.model.dto.EmployeeDTO;
 import com.spring.springV2cleanStructure.model.dto.EmployeeReqDTO;
 import com.spring.springV2cleanStructure.model.dto.EmployeeRespDTO;
 import com.spring.springV2cleanStructure.model.dto.UpdateEmployeeReqDTO;
 import com.spring.springV2cleanStructure.service.EmployeeService;
 import com.spring.springV2cleanStructure.utilities.EmployeeUtility;
+import com.spring.springV2cleanStructure.utilities.PasswordGenerator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/employees")
+@RequestMapping("/test")
 @RequiredArgsConstructor
-public class EmployeeController {
+public class TestController {
     //    we have more one way to use Dependency Injection, by use @Autowirde and that the easy way,
     //    or we can use @REquiredArgsConstructor in the top of class, and put (final) when call classes, and this is more clean than @Annotation.
 //    @Autowirde
@@ -21,20 +21,18 @@ public class EmployeeController {
     private final EmployeeService employeeService;
     private final EmployeeUtility employeeUtility;
 
-    @GetMapping("/employee")
-    public EmployeeDTO getEmployee(@RequestParam("id") Long id){
-        return this.employeeService.get(id);
+    @GetMapping("/test-get")
+    public String getEmployee(){
+        return "test..";
     }
-    @PostMapping("/employee")
-    public EmployeeRespDTO saveEmployee(@RequestBody EmployeeReqDTO req){
-    return this.employeeService.save(req);
+
+    @GetMapping("/get-password")
+    public String getRandomPassword(){
+        return PasswordGenerator.generate();
     }
-    @PutMapping ("/employee")
-    public EmployeeRespDTO updateEmployee(@RequestBody UpdateEmployeeReqDTO req){
-        return (EmployeeRespDTO) this.employeeService.update(req);
-    }
-    @DeleteMapping ("/employee")
-    public void deleteEmployee(@RequestHeader Long id){
-         this.employeeService.softDelete(id);
+
+    @GetMapping("/employee")//return string
+    public String getEmployeeDetails(@RequestParam("id") Long id){
+        return this.employeeUtility.getEmployeeDetails(id);
     }
 }

@@ -1,5 +1,6 @@
 package com.spring.springV2cleanStructure.model.mapper;
 
+import com.spring.springV2cleanStructure.model.dto.EmployeeDTO;
 import com.spring.springV2cleanStructure.model.dto.EmployeeReqDTO;
 import com.spring.springV2cleanStructure.model.dto.EmployeeRespDTO;
 import com.spring.springV2cleanStructure.model.dto.UpdateEmployeeReqDTO;
@@ -10,10 +11,13 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface EmployeeMapperUsingMapSrtuct {
     // ReqDTO => Entity
-    Employee toEntity(EmployeeReqDTO req);
+    Employee toEntity(EmployeeReqDTO dto);
 
     // Entity => RespDTO
-    EmployeeRespDTO toRespDTO(Employee savedEmployee);
+    EmployeeRespDTO toRespDTO(Employee entity);
 
-    Employee toEntity(UpdateEmployeeReqDTO req);
+    Employee toEntity(UpdateEmployeeReqDTO dto);
+
+    EmployeeDTO toDTO (Employee entity);
+    Employee toEntity(EmployeeDTO dto);
 }

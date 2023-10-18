@@ -21,5 +21,4 @@ public class EmployeeRespDTO {
     private String fullName;
 //    private String password; we will never return secret data.
     private String email;
-
 }
