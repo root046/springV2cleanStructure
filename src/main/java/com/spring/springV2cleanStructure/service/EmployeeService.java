@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface EmployeeService {
      EmployeeRespDTO save(EmployeeReqDTO req);
+     EmployeeRespDTO saveV11(EmployeeReqDTO req);
      EmployeeDTO get(Long id);
      String getEmployeeDetailsAsStr(Long id);
      Object update(UpdateEmployeeReqDTO req);

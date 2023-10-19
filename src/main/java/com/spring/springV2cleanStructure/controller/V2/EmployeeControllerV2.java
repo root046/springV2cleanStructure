@@ -1,4 +1,4 @@
-package com.spring.springV2cleanStructure.controller;
+package com.spring.springV2cleanStructure.controller.V2;
 
 import com.spring.springV2cleanStructure.model.dto.EmployeeDTO;
 import com.spring.springV2cleanStructure.model.dto.EmployeeReqDTO;
@@ -10,31 +10,30 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/employees")
+@RequestMapping("/employees/v2")
 @RequiredArgsConstructor
-public class EmployeeController {
-    //    we have more one way to use Dependency Injection, by use @Autowirde and that the easy way,
-    //    or we can use @REquiredArgsConstructor in the top of class, and put (final) when call classes, and this is more clean than @Annotation.
-//    @Autowirde
-//    private  EmployeeService employeeService;
-
+public class EmployeeControllerV2 {
     private final EmployeeService employeeService;
     private final EmployeeUtility employeeUtility;
 
-    @GetMapping("/employee")
+    @GetMapping(value = "")
     public EmployeeDTO get(@RequestParam("id") Long id){
         return this.employeeService.get(id);
     }
-    @PostMapping("/employee")
+    @PostMapping(value = "")
     public EmployeeRespDTO save(@RequestBody EmployeeReqDTO req){
-    return this.employeeService.save(req);
+        return this.employeeService.save(req);
     }
-    @PutMapping ("/employee")
+    @PostMapping(value = "",params = "v=1.1.0")
+    public EmployeeRespDTO saveV11(@RequestBody EmployeeReqDTO req){
+        return this.employeeService.saveV11(req);
+    }
+    @PutMapping (value = "")
     public EmployeeRespDTO update(@RequestBody UpdateEmployeeReqDTO req){
         return (EmployeeRespDTO) this.employeeService.update(req);
     }
-    @DeleteMapping ("/employee")
+    @DeleteMapping (value = "")
     public void delete(@RequestHeader Long id){
-         this.employeeService.softDelete(id);
+        this.employeeService.softDelete(id);
     }
 }

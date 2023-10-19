@@ -4,6 +4,7 @@ import com.spring.springV2cleanStructure.model.dto.EmployeeDTO;
 import com.spring.springV2cleanStructure.model.dto.EmployeeReqDTO;
 import com.spring.springV2cleanStructure.model.dto.EmployeeRespDTO;
 import com.spring.springV2cleanStructure.model.dto.UpdateEmployeeReqDTO;
+import com.spring.springV2cleanStructure.model.dto.V3.EmployeeReqV3DTO;
 import com.spring.springV2cleanStructure.model.entity.Employee;
 import org.mapstruct.Mapper;
 
@@ -12,6 +13,7 @@ import org.mapstruct.Mapper;
 public interface EmployeeMapperUsingMapSrtuct {
     // ReqDTO => Entity
     Employee toEntity(EmployeeReqDTO dto);
+    Employee toEntity(EmployeeReqV3DTO dto);
 
     // Entity => RespDTO
     EmployeeRespDTO toRespDTO(Employee entity);

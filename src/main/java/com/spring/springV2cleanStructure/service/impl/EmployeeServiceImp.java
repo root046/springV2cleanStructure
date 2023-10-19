@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -32,6 +33,16 @@ public class EmployeeServiceImp implements EmployeeService {
             Employee savedEmployee = this.employeeRepo.save(employee);
             System.out.println((req));
             return this.employeeMapper.toRespDTO(savedEmployee);
+    }
+
+    @Override
+    public EmployeeRespDTO saveV11(EmployeeReqDTO req) {
+        Employee employee = this.employeeMapper.toEntity(req);
+        employee.setToken(UUID.randomUUID().toString());
+        employee.setCreatedAt(LocalDateTime.now());
+        Employee savedEmployee = this.employeeRepo.save(employee);
+        System.out.println((req));
+        return this.employeeMapper.toRespDTO(savedEmployee);
     }
 
     @Override

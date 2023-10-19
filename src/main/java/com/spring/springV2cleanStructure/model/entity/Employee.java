@@ -29,6 +29,7 @@ public class Employee {
     private String fullName;
     private String password;
     private String email;
+    private String token;
 
     @Column(name = "created_at")
     @CreationTimestamp
