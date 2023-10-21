@@ -18,3 +18,7 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: update
+
+users:
+  get-user-info:
+    url: https://jsonplaceholder.typicode.com/todos/

@@ -17,3 +17,7 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: update
+
+users:
+  get-user-info:
+    url: http://localhost:8081/hr/mock-data/user?id=
