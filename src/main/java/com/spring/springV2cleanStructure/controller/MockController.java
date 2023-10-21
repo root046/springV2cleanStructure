@@ -1,6 +1,7 @@
 package com.spring.springV2cleanStructure.controller;
 
 import com.spring.springV2cleanStructure.model.dto.Mock.MockUserDTO;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("mock-data")
+//@Profile("dev")//accept more than one environment
 public class MockController {
     @GetMapping("/user")
     public MockUserDTO user(@RequestParam Integer id){

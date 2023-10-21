@@ -3,6 +3,7 @@ package com.spring.springV2cleanStructure.controller;
 import com.spring.springV2cleanStructure.model.dto.Mock.MockUserDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 @RequestMapping("/users")
 @Slf4j // to show log
+//@Profile("prod") //accept more than one environment ,but we don't need it , because we used @Value to know what the environment used now.
 public class RealUserController {
     @Value("${users.get-user-info.url}")// take the value from application-dev.yaml OR application-prod.yaml
     private String getUserInfo;
