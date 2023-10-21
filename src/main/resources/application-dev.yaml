@@ -21,3 +21,8 @@ spring:
 users:
   get-user-info:
     url: http://localhost:8081/hr/mock-data/user?id=
+
+user-config:
+  profile: /user-profile-page-dev
+  edit: /user-edit-page-dev
+  support: /user-support-page-dev

@@ -22,3 +22,8 @@ spring:
 users:
   get-user-info:
     url: https://jsonplaceholder.typicode.com/todos/
+
+user-config:
+  profile: /user-profile-page-prod
+  edit: /user-edit-page-prod
+  support: /user-support-page-prod
