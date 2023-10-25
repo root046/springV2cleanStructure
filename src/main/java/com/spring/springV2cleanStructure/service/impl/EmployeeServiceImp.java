@@ -10,6 +10,7 @@ import com.spring.springV2cleanStructure.model.mapper.EmployeeMapperUsingMapSrtu
 import com.spring.springV2cleanStructure.repository.EmployeeRepo;
 import com.spring.springV2cleanStructure.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -18,6 +19,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class EmployeeServiceImp implements EmployeeService {
     //    we have more one way to use Dependency Injection, by use @Autowirde and that the easy way,
     //    or we can use @REquiredArgsConstructor in the top of class, and put (final) when call classes, and this is more clean than @Annotation.
@@ -27,12 +29,20 @@ public class EmployeeServiceImp implements EmployeeService {
     private final EmployeeMapperUsingMapSrtuct employeeMapper;
     private final CleanMapper cleanMapper;
     @Override
-    public EmployeeRespDTO save(EmployeeReqDTO req) {
+    public EmployeeRespDTO save(EmployeeReqDTO req,String correlationId) {
+            log.info("save employee inside EmployeeServiceImp request : {} correlationId : {}" , req,correlationId);
             Employee employee = this.employeeMapper.toEntity(req);
             employee.setCreatedAt(LocalDateTime.now());
             Employee savedEmployee = this.employeeRepo.save(employee);
-            System.out.println((req));
+            log.info("saved Employee : {} correlationId : {} " ,req ,correlationId);
             return this.employeeMapper.toRespDTO(savedEmployee);
+    }
+
+    public EmployeeRespDTO save(EmployeeReqDTO req) {
+        Employee employee = this.employeeMapper.toEntity(req);
+        employee.setCreatedAt(LocalDateTime.now());
+        Employee savedEmployee = this.employeeRepo.save(employee);
+        return this.employeeMapper.toRespDTO(savedEmployee);
     }
 
     @Override

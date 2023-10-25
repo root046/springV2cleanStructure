@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface EmployeeService {
+     EmployeeRespDTO save(EmployeeReqDTO req,String correlationId);
      EmployeeRespDTO save(EmployeeReqDTO req);
      EmployeeRespDTO saveV11(EmployeeReqDTO req);
      EmployeeDTO get(Long id);

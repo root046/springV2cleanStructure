@@ -7,6 +7,7 @@ import com.spring.springV2cleanStructure.model.dto.UpdateEmployeeReqDTO;
 import com.spring.springV2cleanStructure.service.EmployeeService;
 import com.spring.springV2cleanStructure.utilities.EmployeeUtility;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
