@@ -45,13 +45,15 @@ public class TestController {
 
     @PostMapping("/employee")
     public EmployeeRespDTO save(@RequestBody EmployeeReqDTO req, HttpServletRequest httpServletRequest){// <= @RequestHeader("correlationId") String correlationId || we use correlationId to trace logs,and put id for every id, and we sendit in header if front-end sendet
-        String correlationId = UUID.randomUUID().toString();
+//        String correlationId = UUID.randomUUID().toString();
         //        log.info("save employee request"); //we will not use +
         log.info("user ip : {} ",httpServletRequest.getRemoteAddr());
         log.info("coming request : {} ",httpServletRequest);
         log.info("save employee request : {} the user fullName : {} " , req , req.getFullName()); // {} mean parameter
-        log.info("New request coming with request details : {} correlationId : {} ", req ,correlationId);
+//        log.info("New request coming with request details : {} correlationId : {} ", req ,correlationId);
+        log.info("New request coming with request details : {} ", req );
 //        log.debug("save employee request : {} the user password : {} " , req , req.getPassword()); // {} mean parameter , log.debug will run if we put logging:level.root=debug in the configuration in application.yaml or application-{env).yaml
-        return this.employeeService.save(req,correlationId);
+//        return this.employeeService.save(req,correlationId);
+        return this.employeeService.save(req);
     }
 }
