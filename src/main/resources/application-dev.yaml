@@ -26,3 +26,10 @@ user-config:
   profile: /user-profile-page-dev
   edit: /user-edit-page-dev
   support: /user-support-page-dev
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+#        or we can put what we just need like = health,metrics
